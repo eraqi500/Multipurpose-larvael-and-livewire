@@ -5,7 +5,7 @@ interface FilterizrState {
     SHUFFLING: 'SHUFFLING';
 }
 /**
- * Possible animation states for Filterizr
+ * Possible animations states for Filterizr
  */
 export declare const FILTERIZR_STATE: FilterizrState;
 export {};

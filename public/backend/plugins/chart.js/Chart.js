@@ -3344,7 +3344,7 @@ helpers$1.extend(Element.prototype, {
 		var start = me._start;
 		var view = me._view;
 
-		// No animation -> No Transition
+		// No animations -> No Transition
 		if (!model || ease === 1) {
 			me._view = helpers$1.extend({}, model);
 			me._start = null;
@@ -3381,14 +3381,14 @@ Element.extend = helpers$1.inherits;
 var core_element = Element;
 
 var exports$3 = core_element.extend({
-	chart: null, // the animation associated chart instance
-	currentStep: 0, // the current animation step
+	chart: null, // the animations associated chart instance
+	currentStep: 0, // the current animations step
 	numSteps: 60, // default number of steps
-	easing: '', // the easing to use for this animation
-	render: null, // render function used by the animation service
+	easing: '', // the easing to use for this animations
+	render: null, // render function used by the animations service
 
-	onAnimationProgress: null, // user specified callback to fire on each step of the animation
-	onAnimationComplete: null, // user specified callback to fire when the animation finishes
+	onAnimationProgress: null, // user specified callback to fire on each step of the animations
+	onAnimationComplete: null, // user specified callback to fire when the animations finishes
 });
 
 var core_animation = exports$3;
@@ -3437,8 +3437,8 @@ var core_animations = {
 
 	/**
 	 * @param {Chart} chart - The chart to animate.
-	 * @param {Chart.Animation} animation - The animation that we will animate.
-	 * @param {number} duration - The animation duration in ms.
+	 * @param {Chart.Animation} animation - The animations that we will animate.
+	 * @param {number} duration - The animations duration in ms.
 	 * @param {boolean} lazy - if true, the chart is not marked as animating to enable more responsive interactions
 	 */
 	addAnimation: function(chart, animation, duration, lazy) {
@@ -3482,7 +3482,7 @@ var core_animations = {
 	requestAnimationFrame: function() {
 		var me = this;
 		if (me.request === null) {
-			// Skip animation frame requests until the active one is executed.
+			// Skip animations frame requests until the active one is executed.
 			// This can happen when processing mouse events, e.g. 'mousemove'
 			// and 'mouseout' events will trigger multiple renders.
 			me.request = helpers$1.requestAnimFrame.call(window, function() {
@@ -3514,7 +3514,7 @@ var core_animations = {
 		var animation, chart, numSteps, nextStep;
 		var i = 0;
 
-		// 1 animation per chart, so we are looping charts here
+		// 1 animations per chart, so we are looping charts here
 		while (i < animations.length) {
 			animation = animations[i];
 			chart = animation.chart;
@@ -3786,7 +3786,7 @@ helpers$1.extend(DatasetController.prototype, {
 		var dataset = me.getDataset();
 		var data = dataset.data || (dataset.data = []);
 
-		// In order to correctly handle data addition/deletion animation (an thus simulate
+		// In order to correctly handle data addition/deletion animations (an thus simulate
 		// real-time charts), we need to monitor these data modifications and synchronize
 		// the internal meta data accordingly.
 		if (me._data !== data) {
@@ -5907,7 +5907,7 @@ var controller_line = core_datasetController.extend({
 			me.updateBezierControlPoints();
 		}
 
-		// Now pivot the point for animation
+		// Now pivot the point for animations
 		for (i = 0, ilen = points.length; i < ilen; ++i) {
 			points[i].pivot();
 		}
@@ -6518,7 +6518,7 @@ var controller_radar = core_datasetController.extend({
 		// Update bezier control points
 		me.updateBezierControlPoints();
 
-		// Now pivot the point for animation
+		// Now pivot the point for animations
 		for (i = 0, ilen = points.length; i < ilen; ++i) {
 			points[i].pivot();
 		}
@@ -7386,7 +7386,7 @@ var platform_basic = {
 	}
 };
 
-var platform_dom = "/*\n * DOM element rendering detection\n * https://davidwalsh.name/detect-node-insertion\n */\n@keyframes chartjs-render-animation {\n\tfrom { opacity: 0.99; }\n\tto { opacity: 1; }\n}\n\n.chartjs-render-monitor {\n\tanimation: chartjs-render-animation 0.001s;\n}\n\n/*\n * DOM element resizing detection\n * https://github.com/marcj/css-element-queries\n */\n.chartjs-size-monitor,\n.chartjs-size-monitor-expand,\n.chartjs-size-monitor-shrink {\n\tposition: absolute;\n\tdirection: ltr;\n\tleft: 0;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\toverflow: hidden;\n\tpointer-events: none;\n\tvisibility: hidden;\n\tz-index: -1;\n}\n\n.chartjs-size-monitor-expand > div {\n\tposition: absolute;\n\twidth: 1000000px;\n\theight: 1000000px;\n\tleft: 0;\n\ttop: 0;\n}\n\n.chartjs-size-monitor-shrink > div {\n\tposition: absolute;\n\twidth: 200%;\n\theight: 200%;\n\tleft: 0;\n\ttop: 0;\n}\n";
+var platform_dom = "/*\n * DOM element rendering detection\n * https://davidwalsh.name/detect-node-insertion\n */\n@keyframes chartjs-render-animations {\n\tfrom { opacity: 0.99; }\n\tto { opacity: 1; }\n}\n\n.chartjs-render-monitor {\n\tanimations: chartjs-render-animations 0.001s;\n}\n\n/*\n * DOM element resizing detection\n * https://github.com/marcj/css-element-queries\n */\n.chartjs-size-monitor,\n.chartjs-size-monitor-expand,\n.chartjs-size-monitor-shrink {\n\tposition: absolute;\n\tdirection: ltr;\n\tleft: 0;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\toverflow: hidden;\n\tpointer-events: none;\n\tvisibility: hidden;\n\tz-index: -1;\n}\n\n.chartjs-size-monitor-expand > div {\n\tposition: absolute;\n\twidth: 1000000px;\n\theight: 1000000px;\n\tleft: 0;\n\ttop: 0;\n}\n\n.chartjs-size-monitor-shrink > div {\n\tposition: absolute;\n\twidth: 200%;\n\theight: 200%;\n\tleft: 0;\n\ttop: 0;\n}\n";
 
 var platform_dom$1 = /*#__PURE__*/Object.freeze({
 __proto__: null,
@@ -7399,7 +7399,7 @@ var EXPANDO_KEY = '$chartjs';
 var CSS_PREFIX = 'chartjs-';
 var CSS_SIZE_MONITOR = CSS_PREFIX + 'size-monitor';
 var CSS_RENDER_MONITOR = CSS_PREFIX + 'render-monitor';
-var CSS_RENDER_ANIMATION = CSS_PREFIX + 'render-animation';
+var CSS_RENDER_ANIMATION = CSS_PREFIX + 'render-animations';
 var ANIMATION_START_EVENTS = ['animationstart', 'webkitAnimationStart'];
 
 /**
@@ -7608,9 +7608,9 @@ function watchForRender(node, handler) {
 		addListener(node, type, proxy);
 	});
 
-	// #4737: Chrome might skip the CSS animation when the CSS_RENDER_MONITOR class
-	// is removed then added back immediately (same animation frame?). Accessing the
-	// `offsetParent` property will force a reflow and re-evaluate the CSS animation.
+	// #4737: Chrome might skip the CSS animations when the CSS_RENDER_MONITOR class
+	// is removed then added back immediately (same animations frame?). Accessing the
+	// `offsetParent` property will force a reflow and re-evaluate the CSS animations.
 	// https://gist.github.com/paulirish/5d52fb081b3570c81e3a#box-metrics
 	// https://github.com/chartjs/Chart.js/issues/4737
 	expando.reflow = !!node.offsetParent;
@@ -9389,7 +9389,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	},
 
 	stop: function() {
-		// Stops any current animation loop occurring
+		// Stops any current animations loop occurring
 		core_animations.cancelAnimation(this);
 		return this;
 	},
@@ -9590,7 +9590,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	},
 
 	/**
-	* Resets the chart back to it's state before the initial animation
+	* Resets the chart back to it's state before the initial animations
 	*/
 	reset: function() {
 		this.resetElements();
@@ -10612,7 +10612,7 @@ var core_helpers = function() {
 
 		return niceFraction * Math.pow(10, exponent);
 	};
-	// Request animation polyfill - https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+	// Request animations polyfill - https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 	helpers$1.requestAnimFrame = (function() {
 		if (typeof window === 'undefined') {
 			return function(callback) {

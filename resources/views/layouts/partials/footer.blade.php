@@ -4,5 +4,6 @@
         Anything you want
     </div>
     <!-- Default to the left -->
+    {{setting('site_text')}}
     <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
 </footer>

@@ -119,7 +119,7 @@ export { getHTMLElement };
 declare const cssEasingValuesRegexp: RegExp;
 export { cssEasingValuesRegexp };
 /**
- * Possible animation states for Filterizr
+ * Possible animations states for Filterizr
  */
 declare const FILTERIZR_STATE: {
     IDLE: string;

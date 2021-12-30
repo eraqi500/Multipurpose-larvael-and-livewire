@@ -425,7 +425,7 @@ $.extend( Scroller.prototype, {
 			$(this.dom.scroller).animate( {
 				"scrollTop": px
 			}, function () {
-				// This needs to happen after the animation has completed and
+				// This needs to happen after the animations has completed and
 				// the final scroll event fired
 				setTimeout( function () {
 					that.s.ani = false;

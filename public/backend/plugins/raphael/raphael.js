@@ -4145,7 +4145,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Raphael.easing_formulas
      [ property ]
      **
-     * Object that contains easing formulas for animation. You could extend it with your own. By default it has following list of easing:
+     * Object that contains easing formulas for animations. You could extend it with your own. By default it has following list of easing:
      # <ul>
      #     <li>“linear”</li>
      #     <li>“&lt;” or “easeIn” or “ease-in”</li>
@@ -4361,20 +4361,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.animateWith
      [ method ]
      **
-     * Acts similar to @Element.animate, but ensure that given animation runs in sync with another given element.
+     * Acts similar to @Element.animate, but ensure that given animations runs in sync with another given element.
      **
      > Parameters
      **
      - el (object) element to sync with
-     - anim (object) animation to sync with
+     - anim (object) animations to sync with
      - params (object) #optional final attributes for the element, see also @Element.attr
-     - ms (number) #optional number of milliseconds for animation to run
+     - ms (number) #optional number of milliseconds for animations to run
      - easing (string) #optional easing type. Accept on of @Raphael.easing_formulas or CSS format: `cubic&#x2010;bezier(XX,&#160;XX,&#160;XX,&#160;XX)`
-     - callback (function) #optional callback function. Will be called at the end of animation.
+     - callback (function) #optional callback function. Will be called at the end of animations.
      * or
      - element (object) element to sync with
-     - anim (object) animation to sync with
-     - animation (object) #optional animation object, see @Raphael.animation
+     - anim (object) animations to sync with
+     - animations (object) #optional animations object, see @Raphael.animations
      **
      = (object) original element
     \*/
@@ -4396,7 +4396,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         return element;
         //
         //
-        // var a = params ? R.animation(params, ms, easing, callback) : anim,
+        // var a = params ? R.animations(params, ms, easing, callback) : anim,
         //     status = element.status(anim);
         // return this.animate(a).status(a, status * anim.ms / a.ms);
     };
@@ -4476,16 +4476,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Animation.delay
      [ method ]
      **
-     * Creates a copy of existing animation object with given delay.
+     * Creates a copy of existing animations object with given delay.
      **
      > Parameters
      **
-     - delay (number) number of ms to pass between animation start and actual animation
+     - delay (number) number of ms to pass between animations start and actual animations
      **
      = (object) new altered Animation object
-     | var anim = Raphael.animation({cx: 10, cy: 20}, 2e3);
-     | circle1.animate(anim); // run the given animation immediately
-     | circle2.animate(anim.delay(500)); // run the given animation after 500 ms
+     | var anim = Raphael.animations({cx: 10, cy: 20}, 2e3);
+     | circle1.animate(anim); // run the given animations immediately
+     | circle2.animate(anim.delay(500)); // run the given animations after 500 ms
     \*/
     Animation.prototype.delay = function (delay) {
         var a = new Animation(this.anim, this.ms);
@@ -4497,11 +4497,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Animation.repeat
      [ method ]
      **
-     * Creates a copy of existing animation object with given repetition.
+     * Creates a copy of existing animations object with given repetition.
      **
      > Parameters
      **
-     - repeat (number) number iterations of animation. For infinite animation pass `Infinity`
+     - repeat (number) number iterations of animations. For infinite animations pass `Infinity`
      **
      = (object) new altered Animation object
     \*/
@@ -4718,18 +4718,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         eve("raphael.anim.start." + element.id, element, anim);
     }
     /*\
-     * Raphael.animation
+     * Raphael.animations
      [ method ]
      **
-     * Creates an animation object that can be passed to the @Element.animate or @Element.animateWith methods.
+     * Creates an animations object that can be passed to the @Element.animate or @Element.animateWith methods.
      * See also @Animation.delay and @Animation.repeat methods.
      **
      > Parameters
      **
      - params (object) final attributes for the element, see also @Element.attr
-     - ms (number) number of milliseconds for animation to run
+     - ms (number) number of milliseconds for animations to run
      - easing (string) #optional easing type. Accept one of @Raphael.easing_formulas or CSS format: `cubic&#x2010;bezier(XX,&#160;XX,&#160;XX,&#160;XX)`
-     - callback (function) #optional callback function. Will be called at the end of animation.
+     - callback (function) #optional callback function. Will be called at the end of animations.
      **
      = (object) @Animation
     \*/
@@ -4751,7 +4751,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             p[attr] = params[attr];
         }
         if (!json) {
-            // if percent-like syntax is used and end-of-all animation callback used
+            // if percent-like syntax is used and end-of-all animations callback used
             if(callback){
                 // find the last one
                 var lastKey = 0;
@@ -4776,16 +4776,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.animate
      [ method ]
      **
-     * Creates and starts animation for given element.
+     * Creates and starts animations for given element.
      **
      > Parameters
      **
      - params (object) final attributes for the element, see also @Element.attr
-     - ms (number) number of milliseconds for animation to run
+     - ms (number) number of milliseconds for animations to run
      - easing (string) #optional easing type. Accept one of @Raphael.easing_formulas or CSS format: `cubic&#x2010;bezier(XX,&#160;XX,&#160;XX,&#160;XX)`
-     - callback (function) #optional callback function. Will be called at the end of animation.
+     - callback (function) #optional callback function. Will be called at the end of animations.
      * or
-     - animation (object) animation object, see @Raphael.animation
+     - animations (object) animations object, see @Raphael.animations
      **
      = (object) original element
     \*/
@@ -4803,17 +4803,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.setTime
      [ method ]
      **
-     * Sets the status of animation of the element in milliseconds. Similar to @Element.status method.
+     * Sets the status of animations of the element in milliseconds. Similar to @Element.status method.
      **
      > Parameters
      **
-     - anim (object) animation object
-     - value (number) number of milliseconds from the beginning of the animation
+     - anim (object) animations object
+     - value (number) number of milliseconds from the beginning of the animations
      **
      = (object) original element if `value` is specified
-     * Note, that during animation following events are triggered:
+     * Note, that during animations following events are triggered:
      *
-     * On each animation frame event `anim.frame.<id>`, on start `anim.start.<id>` and on end `anim.finish.<id>`.
+     * On each animations frame event `anim.frame.<id>`, on start `anim.start.<id>` and on end `anim.finish.<id>`.
     \*/
     elproto.setTime = function (anim, value) {
         if (anim && value != null) {
@@ -4825,18 +4825,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.status
      [ method ]
      **
-     * Gets or sets the status of animation of the element.
+     * Gets or sets the status of animations of the element.
      **
      > Parameters
      **
-     - anim (object) #optional animation object
-     - value (number) #optional 0 – 1. If specified, method works like a setter and sets the status of a given animation to the value. This will cause animation to jump to the given position.
+     - anim (object) #optional animations object
+     - value (number) #optional 0 – 1. If specified, method works like a setter and sets the status of a given animations to the value. This will cause animations to jump to the given position.
      **
      = (number) status
      * or
      = (array) status if `anim` is not specified. Array of objects in format:
      o {
-     o     anim: (object) animation object
+     o     anim: (object) animations object
      o     status: (number) status
      o }
      * or
@@ -4874,11 +4874,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.pause
      [ method ]
      **
-     * Stops animation of the element with ability to resume it later on.
+     * Stops animations of the element with ability to resume it later on.
      **
      > Parameters
      **
-     - anim (object) #optional animation object
+     - anim (object) #optional animations object
      **
      = (object) original element
     \*/
@@ -4894,11 +4894,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.resume
      [ method ]
      **
-     * Resumes animation if it was paused with @Element.pause method.
+     * Resumes animations if it was paused with @Element.pause method.
      **
      > Parameters
      **
-     - anim (object) #optional animation object
+     - anim (object) #optional animations object
      **
      = (object) original element
     \*/
@@ -4916,11 +4916,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.stop
      [ method ]
      **
-     * Stops animation of the element.
+     * Stops animations of the element.
      **
      > Parameters
      **
-     - anim (object) #optional animation object
+     - anim (object) #optional animations object
      **
      = (object) original element
     \*/

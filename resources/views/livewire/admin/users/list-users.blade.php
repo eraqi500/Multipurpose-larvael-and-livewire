@@ -51,6 +51,8 @@
                         <button class="btn btn-primary mr-1" wire:click.prevent="addNew">
                             <i class="fa fa-plus-circle"></i>
                             Add New User</button>
+
+                        <x-search-input  wire:model="searchTerm" />
                     </div>
                     <div class="card">
                         <div class="card-body">
@@ -60,15 +62,33 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Register Date</th>
+                                    <th scope="col"> Role </th>
                                     <th scope="col">Options</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                @foreach($users as $user)
+                                <tbody wire:loading.class="text-muted">
+                                @forelse($users as $user)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
+                                    <td>
+                                        <img src="{{$user->avatar_url}}"
+                                             style="width:50px" class="img img-circle"
+                                             alt="">
+                                    </td>
                                     <td>{{$user -> name}}</td>
                                     <td>{{$user->email}}</td>
+                                    <td>{{$user->created_at->toFormattedData()}}</td>
+                                    <td>
+                                        <select class="form-control" wire:changeRole({{$user}}, $event.target.value)>
+                                            <option value="admin"
+                                                {{($user->role === 'admin') ? 'selected':''}}>
+                                            </option>
+                                            <option value="user"
+                                                {{($user->role === 'user') ? 'selected':''}}>
+                                            </option>
+                                        </select>
+                                    </td>
                                     <td>
                                         <a href="" class="fa fa-edit"
                                            wire:click.prevent="edit({{$user}})"></a>
@@ -77,10 +97,25 @@
                                         </a>
                                     </td>
                                 </tr>
-                                    @endforeach
+                                    @empty
+                                    <div>
+                                        <tr class="text-center">
+                                            <td colspan="5">
+                                                <img src="file:///C:/Users/eraqi/AppData/Local/Temp/undraw_on_the_office_re_cxds.svg" class="m-2" alt="">
+
+                                                <p> No results found</p>
+                                            </td>
+                                        </tr>
+
+                                    </div>
+
+                                    @endforelse
 
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="card-footer d-flex justify-content-end">
+                            {{$users->links()}}
                         </div>
                     </div>
                     <!-- /.card -->
@@ -108,7 +143,8 @@
                             @endif
 
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button"
+                            class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -172,6 +208,50 @@
                             </div>
                             @enderror
                         </div>
+
+                    <div class="form-group">
+                       <label for="customFile"> Profile Photo</label>
+
+                        <div class="custom-file">
+                            <div x-data="{isUploading:false , progress:20}"
+                                 x-on:livewire-upload-start="isUploading = true"
+                                 x-on:livewire-upload-finish="isUploading = false; progress = 5"
+                                 x-on:livewire-upload-error="isUploading = false"
+                                 x-on:livewire-upload-progress="progress = $event.detail.progress"
+                            >
+                                <input type="file"
+                                       wire:model="photo"
+                                       class="custom-file-input"
+                                       id="customFile">
+                                <div x-show.transition="isUploading" class="progress progress-sm mt-1 rounded">
+                                    <div class="progress-bar bg-primary progress-bar-striped"
+                                         role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                                         aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                        <span class="sr-only">40% Complete (success)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <label class="custom-file-label" for="customFile">
+                                @if
+                                {{$photo->getClientOriginalName()}}
+                                    @else
+                                    Choose Image
+                                @endif
+                            </label>
+                        </div>
+
+                        @if($photo)
+                            <img src="{{$photo->temporaryUrl()}}"
+                                 class="img mt-2 d-block mb-2 w-100">
+                        @else
+                            <img src="{{$state['avatar_url'] ?? ''}}"
+                                 class="img  d-block mb-2 w-100">
+                        @endif
+                    </div>
 
 
                 </div>

@@ -564,7 +564,7 @@
 
   var hasCssAnimation = function hasCssAnimation(elem) {
     var style = window.getComputedStyle(elem);
-    var animDuration = parseFloat(style.getPropertyValue('animation-duration') || '0');
+    var animDuration = parseFloat(style.getPropertyValue('animations-duration') || '0');
     var transDuration = parseFloat(style.getPropertyValue('transition-duration') || '0');
     return animDuration > 0 || transDuration > 0;
   };
@@ -2008,7 +2008,7 @@
   }
 
   var handlePopupAnimation = function handlePopupAnimation(instance, popup, innerParams) {
-    var container = getContainer(); // If animation is supported, animate
+    var container = getContainer(); // If animations is supported, animate
 
     var animationIsSupported = animationEndEvent && hasCssAnimation(popup);
     var onClose = innerParams.onClose,
@@ -2231,10 +2231,10 @@
 
     if (params.showLoaderOnConfirm && !params.preConfirm) {
       warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/#ajax-request');
-    } // params.animation will be actually used in renderPopup.js
-    // but in case when params.animation is a function, we need to call that function
+    } // params.animations will be actually used in renderPopup.js
+    // but in case when params.animations is a function, we need to call that function
     // before popup (re)initialization, so it'll be possible to check Swal.isVisible()
-    // inside the params.animation function
+    // inside the params.animations function
 
 
     params.animation = callIfFunction(params.animation);
@@ -2261,7 +2261,7 @@
       params.onBeforeOpen(popup);
     }
 
-    addClasses$1(container, popup, params); // scrolling is 'hidden' until animation is done, after that 'auto'
+    addClasses$1(container, popup, params); // scrolling is 'hidden' until animations is done, after that 'auto'
 
     setScrollingVisibility(container, popup);
 

@@ -3032,7 +3032,7 @@ var effectsEffectBounce = $.effects.define( "bounce", function( options, done ) 
 		downAnim[ ref ] = refValue;
 
 		// If we are showing, force opacity 0 and set the initial position
-		// then do the "first" animation
+		// then do the "first" animations
 		element
 			.css( "opacity", 0 )
 			.css( ref, motion ? -distance * 2 : distance * 2 )
@@ -3593,7 +3593,7 @@ var effectsEffectSize = $.effects.define( "size", function( options, done ) {
 					.offset( offset );
 
 				// Need to save style here so that automatic style restoration
-				// doesn't restore to the original styles from before the animation.
+				// doesn't restore to the original styles from before the animations.
 				$.effects.saveStyle( element );
 			}
 
@@ -3696,7 +3696,7 @@ var effectsEffectPulsate = $.effects.define( "pulsate", "show", function( option
 		hide = mode === "hide",
 		showhide = show || hide,
 
-		// Showing or hiding leaves off the "last" animation
+		// Showing or hiding leaves off the "last" animations
 		anims = ( ( options.times || 5 ) * 2 ) + ( showhide ? 1 : 0 ),
 		duration = options.duration / anims,
 		animateTo = 0,
@@ -3821,12 +3821,12 @@ var effectsEffectSlide = $.effects.define( "slide", "show", function( options, d
 	startClip = element.cssClip();
 	startRef = element.position()[ ref ];
 
-	// Define hide animation
+	// Define hide animations
 	animation[ ref ] = ( positiveMotion ? -1 : 1 ) * distance + startRef;
 	animation.clip = element.cssClip();
 	animation.clip[ map[ direction ][ 1 ] ] = animation.clip[ map[ direction ][ 0 ] ];
 
-	// Reverse the animation if we're showing
+	// Reverse the animations if we're showing
 	if ( mode === "show" ) {
 		element.cssClip( animation.clip );
 		element.css( ref, animation[ ref ] );
@@ -4743,7 +4743,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 		this._toggle( eventData );
 
 		// Switch classes
-		// corner classes on the previously active header stay after the animation
+		// corner classes on the previously active header stay after the animations
 		this._removeClass( active, "ui-accordion-header-active", "ui-state-active" );
 		if ( options.icons ) {
 			activeChildren = active.children( ".ui-accordion-header-icon" );
@@ -4768,7 +4768,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 		var toShow = data.newPanel,
 			toHide = this.prevShow.length ? this.prevShow : data.oldPanel;
 
-		// Handle activating a panel during the animation for another activation
+		// Handle activating a panel during the animations for another activation
 		this.prevShow.add( this.prevHide ).stop( true, true );
 		this.prevShow = toShow;
 		this.prevHide = toHide;
@@ -4834,7 +4834,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 			easing = options;
 		}
 
-		// fall back from options to animation in case of partial down settings
+		// fall back from options to animations in case of partial down settings
 		easing = easing || options.easing || animate.easing;
 		duration = duration || options.duration || animate.duration;
 
@@ -7252,7 +7252,7 @@ function Datepicker() {
 	this._defaults = { // Global defaults for all the date picker instances
 		showOn: "focus", // "focus" for popup on focus,
 			// "button" for trigger button, or "both" for either
-		showAnim: "fadeIn", // Name of jQuery animation for popup
+		showAnim: "fadeIn", // Name of jQuery animations for popup
 		showOptions: {}, // Options for enhanced animations
 		defaultDate: null, // Used when field is blank: actual date,
 			// +/-number for offset from today, null for today
@@ -11569,7 +11569,7 @@ $.ui.plugin.add( "resizable", "animate", {
 						$( pr[ 0 ] ).css( { width: data.width, height: data.height } );
 					}
 
-					// Propagating resize, and updating values for each animation step
+					// Propagating resize, and updating values for each animations step
 					that._updateCache( data );
 					that._propagate( "resize", event );
 
@@ -17887,7 +17887,7 @@ $.widget( "ui.tabs", {
 				// tab is already loading
 				tab.hasClass( "ui-tabs-loading" ) ||
 
-				// can't switch durning an animation
+				// can't switch durning an animations
 				this.running ||
 
 				// click on active header, but not collapsible
@@ -18662,7 +18662,7 @@ $.widget( "ui.tooltip", {
 			that.close( event, true );
 
 			// Remove immediately; destroying an open tooltip doesn't use the
-			// hide animation
+			// hide animations
 			$( "#" + id ).remove();
 
 			// Restore the title

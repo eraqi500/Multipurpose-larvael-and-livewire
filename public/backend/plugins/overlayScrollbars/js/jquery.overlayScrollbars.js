@@ -3678,9 +3678,9 @@
                                         _viewportElement[scroll](instantScrollPosition); //scroll instantly to new position
                                         if (instantScrollTransition) {
                                             //get the scroll position after instant scroll (in case CSS Snap Points are used) to get the correct snapped scroll position
-                                            //and the animation stops at the correct point
+                                            //and the animations stops at the correct point
                                             instantScrollPosition = _viewportElement[scroll]();
-                                            //scroll back to the position before instant scrolling so animation can be performed
+                                            //scroll back to the position before instant scrolling so animations can be performed
                                             _viewportElement[scroll](currScroll);
 
                                             instantScrollPosition = rtlIsNormal && _rtlScrollBehavior.i ? (scrollRange - instantScrollPosition) : instantScrollPosition;
@@ -4653,9 +4653,9 @@
                  *    [BOOLEAN]                                         If true the css margin of the element will be used, if false no margin will be used.
                  *    [NUMBER]                                          The margin will be used for all edges.
                  *
-                 * @param duration The duration of the scroll animation, OR a jQuery animation configuration object.
-                 * @param easing The animation easing.
-                 * @param complete The animation complete callback.
+                 * @param duration The duration of the scroll animations, OR a jQuery animations configuration object.
+                 * @param easing The animations easing.
+                 * @param complete The animations complete callback.
                  * @returns {{
                  *   position: {x: number, y: number},
                  *   ratio: {x: number, y: number},

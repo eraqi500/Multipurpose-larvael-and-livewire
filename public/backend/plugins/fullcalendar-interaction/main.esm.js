@@ -591,7 +591,7 @@ var AutoScroller = /** @class */ (function () {
         this.everMovedLeft = false;
         this.everMovedRight = false;
         this.animate = function () {
-            if (_this.isAnimating) { // wasn't cancelled between animation calls
+            if (_this.isAnimating) { // wasn't cancelled between animations calls
                 var edge = _this.computeBestEdge(_this.pointerScreenX + window.pageXOffset, _this.pointerScreenY + window.pageYOffset);
                 if (edge) {
                     var now = getTime();
@@ -599,7 +599,7 @@ var AutoScroller = /** @class */ (function () {
                     _this.requestAnimation(now);
                 }
                 else {
-                    _this.isAnimating = false; // will stop animation
+                    _this.isAnimating = false; // will stop animations
                 }
             }
         };
@@ -644,7 +644,7 @@ var AutoScroller = /** @class */ (function () {
     };
     AutoScroller.prototype.stop = function () {
         if (this.isEnabled) {
-            this.isAnimating = false; // will stop animation
+            this.isAnimating = false; // will stop animations
             for (var _i = 0, _a = this.scrollCaches; _i < _a.length; _i++) {
                 var scrollCache = _a[_i];
                 scrollCache.destroy();
@@ -755,12 +755,12 @@ var FeaturefulElementDragging = /** @class */ (function (_super) {
         _this.touchScrollAllowed = true; // prevents drag from starting and blocks scrolling during drag
         _this.mirrorNeedsRevert = false;
         _this.isInteracting = false; // is the user validly moving the pointer? lasts until pointerup
-        _this.isDragging = false; // is it INTENTFULLY dragging? lasts until after revert animation
+        _this.isDragging = false; // is it INTENTFULLY dragging? lasts until after revert animations
         _this.isDelayEnded = false;
         _this.isDistanceSurpassed = false;
         _this.delayTimeoutId = null;
         _this.onPointerDown = function (ev) {
-            if (!_this.isDragging) { // so new drag doesn't happen while revert animation is going
+            if (!_this.isDragging) { // so new drag doesn't happen while revert animations is going
                 _this.isInteracting = true;
                 _this.isDelayEnded = false;
                 _this.isDistanceSurpassed = false;
@@ -1402,7 +1402,7 @@ var EventDragging = /** @class */ (function (_super) {
                 var relevantEvents_1 = _this.relevantEvents;
                 var mutatedRelevantEvents = _this.mutatedRelevantEvents;
                 var finalHit = _this.hitDragging.finalHit;
-                _this.clearDrag(); // must happen after revert animation
+                _this.clearDrag(); // must happen after revert animations
                 initialCalendar_1.publiclyTrigger('eventDragStop', [
                     {
                         el: _this.subjectSeg.el,
@@ -2058,7 +2058,7 @@ var InferredElementDragging = /** @class */ (function (_super) {
         _this.handlePointerUp = function (ev) {
             _this.emitter.trigger('pointerup', ev);
             if (!_this.shouldIgnoreMove) {
-                // fire dragend right away. does not support a revert animation
+                // fire dragend right away. does not support a revert animations
                 _this.emitter.trigger('dragend', ev);
             }
         };

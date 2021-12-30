@@ -950,7 +950,7 @@
          *
          * @param opt the options
          *  opt.hiddenOpacity opacity for hidden element (default = 0.3)
-         *  opt.animDuration animation duration in ms (default = 0)
+         *  opt.animDuration animations duration in ms (default = 0)
          *  opt.afterShowRange callback
          *  opt.ranges the range to show:
          *  Example:
@@ -1007,7 +1007,7 @@
          * @param ranges: the ranges
          * @param elems: list of element on which to check against previous range
          * @hiddenOpacity: the opacity when hidden
-         * @animDuration: the animation duration
+         * @animDuration: the animations duration
          */
         showElemByRange: function(ranges, elems, hiddenOpacity, animDuration) {
             var self = this;
@@ -1060,12 +1060,12 @@
          * Handle elem.mapElem and elem.textElem
          * @param elem the element
          * @param opacity the opacity to apply
-         * @param animDuration the animation duration to use
+         * @param animDuration the animations duration to use
          */
         setElementOpacity: function(elem, opacity, animDuration) {
             var self = this;
 
-            // Ensure no animation is running
+            // Ensure no animations is running
             //elem.mapElem.stop();
             //if (elem.textElem) elem.textElem.stop();
 
@@ -1098,7 +1098,7 @@
          *  opt.deletePlotKeys plots to delete from the map (array, or "all" to remove all plots)
          *  opt.deleteLinkKeys links to remove from the map (array, or "all" to remove all links)
          *  opt.setLegendElemsState the state of legend elements to be set : show (default) or hide
-         *  opt.animDuration animation duration in ms (default = 0)
+         *  opt.animDuration animations duration in ms (default = 0)
          *  opt.afterUpdate hook that allows to add custom processing on the map
          */
         onUpdateEvent: function (e, opt) {
@@ -1109,7 +1109,7 @@
             var i = 0;
             var animDuration = (opt.animDuration) ? opt.animDuration : 0;
 
-            // This function remove an element using animation (or not, depending on animDuration)
+            // This function remove an element using animations (or not, depending on animDuration)
             // Used for deletePlotKeys and deleteLinkKeys
             var fnRemoveElement = function (elem) {
 
@@ -1122,7 +1122,7 @@
                 });
             };
 
-            // This function show an element using animation
+            // This function show an element using animations
             // Used for newPlots and newLinks
             var fnShowElement = function (elem) {
                 // Starts with hidden elements
@@ -1917,7 +1917,7 @@
          * @param legendType corresponding legend type (area or plot)
          * @param opts object additionnal options
          *          hideOtherElems boolean, if other elems shall be hidden
-         *          animDuration duration of animation
+         *          animDuration duration of animations
          */
         handleClickOnLegendElem: function(elem, id, legendIndex, legendType, opts) {
             var self = this;
@@ -2271,7 +2271,7 @@
          * @param y coordinate of the point to focus on
          * @param w map defined width
          * @param h map defined height
-         * @param duration defined length of time for animation
+         * @param duration defined length of time for animations
          * @param easingFunction defined Raphael supported easing_formula to use
          */
         animateViewBox: function (targetX, targetY, targetW, targetH, duration, easingFunction) {
@@ -2306,7 +2306,7 @@
             self.zoomAnimStartTime = (new Date()).getTime();
 
             /* Actual function to animate the ViewBox
-             * Uses requestAnimationFrame to schedule itself again until animation is over
+             * Uses requestAnimationFrame to schedule itself again until animations is over
              */
             var computeNextStep = function () {
                 // Cancel any remaining animationFrame
@@ -2316,7 +2316,7 @@
                 self.cancelAnimationFrame(self.zoomAnimID);
                 // Compute elapsed time
                 var elapsed = (new Date()).getTime() - self.zoomAnimStartTime;
-                // Check if animation should finish
+                // Check if animations should finish
                 if (elapsed < durationWithMargin) {
                     // Hold the future ViewBox values
                     var x, y, w, h;
@@ -2328,7 +2328,7 @@
                     // A change of ViewBox target between steps means the user is triggering
                     // the zoom fast (like a big scroll with its mousewheel)
                     //
-                    // The new animation step with the new target will always take precedence over the
+                    // The new animations step with the new target will always take precedence over the
                     // last one and start from 0 (we overwrite zoomAnimStartTime and cancel the scheduled frame)
                     //
                     // So if we don't detect the change of target and adapt our computation,
@@ -2339,7 +2339,7 @@
                     // The next step will then take the lead and continue from there, achieving a nicer
                     // experience for user.
 
-                    // Change of target IF: an old animation start value exists AND the target has actually changed
+                    // Change of target IF: an old animations start value exists AND the target has actually changed
                     if (oldZoomAnimStartTime && self.zoomAnimCVBTarget && self.zoomAnimCVBTarget.w !== targetW) {
                         // Compute the real time elapsed with the last step
                         var realElapsed = (new Date()).getTime() - oldZoomAnimStartTime;
@@ -2353,7 +2353,7 @@
                         y = cy + (self.zoomAnimCVBTarget.y - cy) * realRatio;
                         w = cw + (self.zoomAnimCVBTarget.w - cw) * realRatio;
                         h = ch + (self.zoomAnimCVBTarget.h - ch) * realRatio;
-                        // Update cw, cy, cw and ch so the next step take animation from here
+                        // Update cw, cy, cw and ch so the next step take animations from here
                         cx = x;
                         dx = targetX - cx;
                         cy = y;
@@ -2394,7 +2394,7 @@
                     // Schedule the next step
                     self.zoomAnimID = self.requestAnimationFrame(computeNextStep);
                 } else {
-                    /* Zoom animation done ! */
+                    /* Zoom animations done ! */
                     // Perform some cleaning
                     self.zoomAnimStartTime = null;
                     self.zoomAnimCVBTarget = null;
@@ -2497,11 +2497,11 @@
         /*
          * Animate wrapper for Raphael element
          *
-         * Perform an animation and ensure the non-animated attr are set.
+         * Perform an animations and ensure the non-animated attr are set.
          * This is needed for specific attributes like cursor who will not
          * be animated, and thus not set.
          *
-         * If duration is set to 0 (or not set), no animation are performed
+         * If duration is set to 0 (or not set), no animations are performed
          * and attributes are directly set (and the callback directly called)
          */
         // List extracted from Raphael internal vars
@@ -2517,7 +2517,7 @@
          * @param element Raphael element
          * @param attrs Attributes object to animate
          * @param duration Animation duration in ms
-         * @param callback Callback to eventually call after animation is done
+         * @param callback Callback to eventually call after animations is done
          */
         animate: function(element, attrs, duration, callback) {
             var self = this;
@@ -2535,12 +2535,12 @@
                 }
                 // Set non-animated attributes
                 element.attr(attrsNonAnimated);
-                // Start animation for all attributes
+                // Start animations for all attributes
                 element.animate(attrs, duration, 'linear', function() {
                     if (callback) callback();
                 });
             } else {
-                // No animation: simply set all attributes...
+                // No animations: simply set all attributes...
                 element.attr(attrs);
                 // ... and call the callback if needed
                 if (callback) callback();

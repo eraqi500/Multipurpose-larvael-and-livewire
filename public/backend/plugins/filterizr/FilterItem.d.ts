@@ -28,16 +28,16 @@ export default class FilterItem {
     /**
      * Filters in a specific FilterItem out of the grid.
      * @param targetPosition the position towards which the element should animate
-     * @param cssOptions for the animation
+     * @param cssOptions for the animations
      */
     filterIn(targetPosition: Position, cssOptions: Dictionary): void;
     /**
      * Filters out a specific FilterItem out of the grid.
-     * @param cssOptions for the animation
+     * @param cssOptions for the animations
      */
     filterOut(cssOptions: Dictionary): void;
     /**
-     * Helper method to calculate the animation delay for a given grid item
+     * Helper method to calculate the animations delay for a given grid item
      * @param delay in ms
      * @param delayMode can be 'alternate' or 'progressive'
      */

@@ -7044,7 +7044,7 @@ function createFxNow() {
 	return ( fxNow = Date.now() );
 }
 
-// Generate parameters to create a standard animation
+// Generate parameters to create a standard animations
 function genFx( type, includeWidth ) {
 	var which,
 		i = 0,
@@ -7202,7 +7202,7 @@ function defaultPrefilter( elem, props, opts ) {
 	propTween = false;
 	for ( prop in orig ) {
 
-		// General show/hide setup for this element animation
+		// General show/hide setup for this element animations
 		if ( !propTween ) {
 			if ( dataShow ) {
 				if ( "hidden" in dataShow ) {
@@ -7228,7 +7228,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 			/* eslint-enable no-loop-func */
 
-				// The final step of a "hide" animation is actually hiding the element
+				// The final step of a "hide" animations is actually hiding the element
 				if ( !hidden ) {
 					showHide( [ elem ] );
 				}
@@ -7323,12 +7323,12 @@ function Animation( elem, properties, options ) {
 				return remaining;
 			}
 
-			// If this was an empty animation, synthesize a final progress notification
+			// If this was an empty animations, synthesize a final progress notification
 			if ( !length ) {
 				deferred.notifyWith( elem, [ animation, 1, 0 ] );
 			}
 
-			// Resolve the animation and report its conclusion
+			// Resolve the animations and report its conclusion
 			deferred.resolveWith( elem, [ animation ] );
 			return false;
 		},

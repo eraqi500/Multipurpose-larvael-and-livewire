@@ -7502,7 +7502,7 @@ function createFxNow() {
 	return ( fxNow = jQuery.now() );
 }
 
-// Generate parameters to create a standard animation
+// Generate parameters to create a standard animations
 function genFx( type, includeWidth ) {
 	var which,
 		attrs = { height: type },
